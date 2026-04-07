@@ -1,0 +1,6 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Session Manager",
+  "version": "1.0.0",
+  "description": "A Chrome extension for managing Gemini sessions"
+}
