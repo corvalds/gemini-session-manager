@@ -66,6 +66,15 @@
   color: var(--gsm-text-primary);
 }
 
+.gsm-add-folder-btn:focus-visible {
+  outline: 2px solid var(--gsm-accent);
+  outline-offset: 1px;
+}
+
+.gsm-add-folder-btn:active {
+  background: var(--gsm-hover-strong);
+}
+
 /* Folder item */
 .gsm-folder {
   margin: 2px 0;
@@ -133,6 +142,10 @@
   color: var(--gsm-text-primary);
 }
 
+.gsm-folder-name-input:focus {
+  box-shadow: 0 0 0 1px var(--gsm-accent);
+}
+
 .gsm-folder-actions {
   display: none;
   gap: 2px;
@@ -158,6 +171,16 @@
 .gsm-folder-action-btn:hover {
   background: var(--gsm-hover-strong);
   color: var(--gsm-text-primary);
+}
+
+.gsm-folder-action-btn:focus-visible {
+  outline: 2px solid var(--gsm-accent);
+  outline-offset: 1px;
+}
+
+.gsm-folder-action-btn:active {
+  background: var(--gsm-hover-strong);
+  opacity: 0.8;
 }
 
 .gsm-folder-count {
@@ -218,6 +241,11 @@
   background: var(--gsm-danger-bg);
 }
 
+.gsm-folder-conv-remove:focus-visible {
+  outline: 2px solid var(--gsm-accent);
+  outline-offset: 1px;
+}
+
 .gsm-folder-empty {
   padding: 6px 12px;
   font-size: 12px;
@@ -267,6 +295,15 @@
 
 .gsm-context-menu-item:hover {
   background: var(--gsm-hover);
+}
+
+.gsm-context-menu-item:focus-visible {
+  outline: 2px solid var(--gsm-accent);
+  outline-offset: -2px;
+}
+
+.gsm-context-menu-item:active {
+  background: var(--gsm-hover-strong);
 }
 
 .gsm-context-menu-divider {
