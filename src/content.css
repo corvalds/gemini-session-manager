@@ -57,7 +57,7 @@
   color: var(--gsm-text-secondary);
   font-size: 18px;
   line-height: 1;
-  padding: 2px 4px;
+  padding: 8px;
   border-radius: 4px;
 }
 
@@ -90,7 +90,7 @@
 .gsm-folder-title {
   display: flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 10px 12px;
   cursor: pointer;
   border-radius: 8px;
   user-select: none;
@@ -163,7 +163,7 @@
   cursor: pointer;
   color: var(--gsm-text-secondary);
   font-size: 14px;
-  padding: 2px 4px;
+  padding: 6px;
   border-radius: 4px;
   line-height: 1;
 }
@@ -202,7 +202,7 @@
 .gsm-folder-conv-item {
   display: flex;
   align-items: center;
-  padding: 6px 12px;
+  padding: 8px 12px;
   font-size: 13px;
   color: var(--gsm-text-body);
   border-radius: 6px;
@@ -228,7 +228,7 @@
   cursor: pointer;
   color: var(--gsm-text-tertiary);
   font-size: 12px;
-  padding: 2px;
+  padding: 6px;
   border-radius: 4px;
 }
 
@@ -258,7 +258,7 @@
   cursor: grab;
   color: var(--gsm-text-tertiary);
   font-size: 12px;
-  padding: 0 2px;
+  padding: 4px;
   flex-shrink: 0;
 }
 
@@ -281,7 +281,7 @@
 .gsm-context-menu-item {
   display: block;
   width: 100%;
-  padding: 8px 16px;
+  padding: 10px 16px;
   border: none;
   background: none;
   cursor: pointer;
