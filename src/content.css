@@ -252,10 +252,13 @@
 }
 
 .gsm-folder-empty {
-  padding: 6px 12px;
+  padding: 12px;
   font-size: 12px;
   color: var(--gsm-text-tertiary);
-  font-style: italic;
+  text-align: center;
+  border: 1px dashed var(--gsm-divider);
+  border-radius: 6px;
+  margin: 4px 8px 8px;
 }
 
 /* Drag handle for folder reorder */
