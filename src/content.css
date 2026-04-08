@@ -1,5 +1,38 @@
 /* ===== Gemini Session Manager - Injected Styles ===== */
 
+:root {
+  --gsm-text-primary: #202124;
+  --gsm-text-secondary: #5f6368;
+  --gsm-text-tertiary: #80868b;
+  --gsm-text-body: #3c4043;
+  --gsm-accent: #1a73e8;
+  --gsm-danger: #d93025;
+  --gsm-divider: #e8eaed;
+  --gsm-surface: #fff;
+  --gsm-hover: rgba(0, 0, 0, 0.04);
+  --gsm-hover-medium: rgba(0, 0, 0, 0.06);
+  --gsm-hover-strong: rgba(0, 0, 0, 0.08);
+  --gsm-danger-bg: rgba(217, 48, 37, 0.08);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gsm-text-primary: #e8eaed;
+    --gsm-text-secondary: #9aa0a6;
+    --gsm-text-tertiary: #9aa0a6;
+    --gsm-text-body: #bdc1c6;
+    --gsm-accent: #8ab4f8;
+    --gsm-danger: #f28b82;
+    --gsm-divider: #5f6368;
+    --gsm-surface: #303134;
+    --gsm-hover: rgba(255, 255, 255, 0.06);
+    --gsm-hover-medium: rgba(255, 255, 255, 0.08);
+    --gsm-hover-strong: rgba(255, 255, 255, 0.1);
+    --gsm-danger-bg: rgba(242, 139, 130, 0.12);
+  }
+}
+
 .gsm-folder-section {
   padding: 0 8px;
   margin-bottom: 8px;
@@ -12,7 +45,7 @@
   padding: 8px 12px;
   font-size: 11px;
   font-weight: 500;
-  color: #5f6368;
+  color: var(--gsm-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -21,7 +54,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #5f6368;
+  color: var(--gsm-text-secondary);
   font-size: 18px;
   line-height: 1;
   padding: 2px 4px;
@@ -29,8 +62,8 @@
 }
 
 .gsm-add-folder-btn:hover {
-  background: rgba(0, 0, 0, 0.06);
-  color: #202124;
+  background: var(--gsm-hover-medium);
+  color: var(--gsm-text-primary);
 }
 
 /* Folder item */
@@ -41,7 +74,7 @@
 }
 
 .gsm-folder.gsm-drag-over {
-  outline: 2px solid #1a73e8;
+  outline: 2px solid var(--gsm-accent);
   outline-offset: -2px;
 }
 
@@ -54,11 +87,11 @@
   user-select: none;
   gap: 8px;
   font-size: 14px;
-  color: #202124;
+  color: var(--gsm-text-primary);
 }
 
 .gsm-folder-title:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--gsm-hover);
 }
 
 .gsm-folder-title.gsm-dragging {
@@ -68,7 +101,7 @@
 .gsm-folder-arrow {
   font-size: 10px;
   transition: transform 0.15s ease;
-  color: #5f6368;
+  color: var(--gsm-text-secondary);
   flex-shrink: 0;
 }
 
@@ -90,14 +123,14 @@
 
 .gsm-folder-name-input {
   flex: 1;
-  border: 1px solid #1a73e8;
+  border: 1px solid var(--gsm-accent);
   border-radius: 4px;
   padding: 2px 6px;
   font-size: 14px;
   outline: none;
   font-family: inherit;
-  background: #fff;
-  color: #202124;
+  background: var(--gsm-surface);
+  color: var(--gsm-text-primary);
 }
 
 .gsm-folder-actions {
@@ -115,7 +148,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #5f6368;
+  color: var(--gsm-text-secondary);
   font-size: 14px;
   padding: 2px 4px;
   border-radius: 4px;
@@ -123,13 +156,13 @@
 }
 
 .gsm-folder-action-btn:hover {
-  background: rgba(0, 0, 0, 0.08);
-  color: #202124;
+  background: var(--gsm-hover-strong);
+  color: var(--gsm-text-primary);
 }
 
 .gsm-folder-count {
   font-size: 12px;
-  color: #80868b;
+  color: var(--gsm-text-tertiary);
   flex-shrink: 0;
 }
 
@@ -148,14 +181,14 @@
   align-items: center;
   padding: 6px 12px;
   font-size: 13px;
-  color: #3c4043;
+  color: var(--gsm-text-body);
   border-radius: 6px;
   cursor: pointer;
   gap: 8px;
 }
 
 .gsm-folder-conv-item:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--gsm-hover);
 }
 
 .gsm-folder-conv-name {
@@ -170,7 +203,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #80868b;
+  color: var(--gsm-text-tertiary);
   font-size: 12px;
   padding: 2px;
   border-radius: 4px;
@@ -181,21 +214,21 @@
 }
 
 .gsm-folder-conv-remove:hover {
-  color: #d93025;
-  background: rgba(217, 48, 37, 0.08);
+  color: var(--gsm-danger);
+  background: var(--gsm-danger-bg);
 }
 
 .gsm-folder-empty {
   padding: 6px 12px;
   font-size: 12px;
-  color: #80868b;
+  color: var(--gsm-text-tertiary);
   font-style: italic;
 }
 
 /* Drag handle for folder reorder */
 .gsm-drag-handle {
   cursor: grab;
-  color: #80868b;
+  color: var(--gsm-text-tertiary);
   font-size: 12px;
   padding: 0 2px;
   flex-shrink: 0;
@@ -208,7 +241,7 @@
 /* Context menu for adding conversation to folder */
 .gsm-context-menu {
   position: fixed;
-  background: #fff;
+  background: var(--gsm-surface);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 4px 0;
@@ -225,7 +258,7 @@
   background: none;
   cursor: pointer;
   font-size: 13px;
-  color: #202124;
+  color: var(--gsm-text-primary);
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
@@ -233,35 +266,11 @@
 }
 
 .gsm-context-menu-item:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--gsm-hover);
 }
 
 .gsm-context-menu-divider {
   height: 1px;
-  background: #e8eaed;
+  background: var(--gsm-divider);
   margin: 4px 0;
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .gsm-folder-header { color: #9aa0a6; }
-  .gsm-add-folder-btn { color: #9aa0a6; }
-  .gsm-add-folder-btn:hover { background: rgba(255, 255, 255, 0.08); color: #e8eaed; }
-  .gsm-folder-title { color: #e8eaed; }
-  .gsm-folder-title:hover { background: rgba(255, 255, 255, 0.06); }
-  .gsm-folder-arrow { color: #9aa0a6; }
-  .gsm-folder-name-input { background: #303134; color: #e8eaed; border-color: #8ab4f8; }
-  .gsm-folder-action-btn { color: #9aa0a6; }
-  .gsm-folder-action-btn:hover { background: rgba(255, 255, 255, 0.08); color: #e8eaed; }
-  .gsm-folder-count { color: #9aa0a6; }
-  .gsm-folder-conv-item { color: #bdc1c6; }
-  .gsm-folder-conv-item:hover { background: rgba(255, 255, 255, 0.06); }
-  .gsm-folder-conv-remove { color: #9aa0a6; }
-  .gsm-folder-empty { color: #9aa0a6; }
-  .gsm-drag-handle { color: #9aa0a6; }
-  .gsm-context-menu { background: #303134; }
-  .gsm-context-menu-item { color: #e8eaed; }
-  .gsm-context-menu-item:hover { background: rgba(255, 255, 255, 0.06); }
-  .gsm-context-menu-divider { background: #5f6368; }
-  .gsm-folder.gsm-drag-over { outline-color: #8ab4f8; }
 }
