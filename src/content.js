@@ -349,7 +349,7 @@
     menu.style.top = y + 'px';
 
     const title = document.createElement('div');
-    title.style.cssText = 'padding: 6px 16px; font-size: 11px; color: #80868b; text-transform: uppercase;';
+    title.className = 'gsm-context-menu-title';
     title.textContent = 'Add to folder';
     menu.appendChild(title);
 

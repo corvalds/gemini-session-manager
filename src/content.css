@@ -311,3 +311,11 @@
   background: var(--gsm-divider);
   margin: 4px 0;
 }
+
+.gsm-context-menu-title {
+  padding: 6px 16px;
+  font-size: 11px;
+  color: var(--gsm-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
