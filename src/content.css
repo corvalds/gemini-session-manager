@@ -1,0 +1,267 @@
+/* ===== Gemini Session Manager - Injected Styles ===== */
+
+.gsm-folder-section {
+  padding: 0 8px;
+  margin-bottom: 8px;
+}
+
+.gsm-folder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #5f6368;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gsm-add-folder-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5f6368;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.gsm-add-folder-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #202124;
+}
+
+/* Folder item */
+.gsm-folder {
+  margin: 2px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.gsm-folder.gsm-drag-over {
+  outline: 2px solid #1a73e8;
+  outline-offset: -2px;
+}
+
+.gsm-folder-title {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  user-select: none;
+  gap: 8px;
+  font-size: 14px;
+  color: #202124;
+}
+
+.gsm-folder-title:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.gsm-folder-title.gsm-dragging {
+  opacity: 0.5;
+}
+
+.gsm-folder-arrow {
+  font-size: 10px;
+  transition: transform 0.15s ease;
+  color: #5f6368;
+  flex-shrink: 0;
+}
+
+.gsm-folder.gsm-open .gsm-folder-arrow {
+  transform: rotate(90deg);
+}
+
+.gsm-folder-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.gsm-folder-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gsm-folder-name-input {
+  flex: 1;
+  border: 1px solid #1a73e8;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  background: #fff;
+  color: #202124;
+}
+
+.gsm-folder-actions {
+  display: none;
+  gap: 2px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.gsm-folder-title:hover .gsm-folder-actions {
+  display: flex;
+}
+
+.gsm-folder-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5f6368;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.gsm-folder-action-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #202124;
+}
+
+.gsm-folder-count {
+  font-size: 12px;
+  color: #80868b;
+  flex-shrink: 0;
+}
+
+/* Conversation list inside folder */
+.gsm-folder-conversations {
+  display: none;
+  padding-left: 16px;
+}
+
+.gsm-folder.gsm-open .gsm-folder-conversations {
+  display: block;
+}
+
+.gsm-folder-conv-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #3c4043;
+  border-radius: 6px;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.gsm-folder-conv-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.gsm-folder-conv-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gsm-folder-conv-remove {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #80868b;
+  font-size: 12px;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.gsm-folder-conv-item:hover .gsm-folder-conv-remove {
+  display: block;
+}
+
+.gsm-folder-conv-remove:hover {
+  color: #d93025;
+  background: rgba(217, 48, 37, 0.08);
+}
+
+.gsm-folder-empty {
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #80868b;
+  font-style: italic;
+}
+
+/* Drag handle for folder reorder */
+.gsm-drag-handle {
+  cursor: grab;
+  color: #80868b;
+  font-size: 12px;
+  padding: 0 2px;
+  flex-shrink: 0;
+}
+
+.gsm-drag-handle:active {
+  cursor: grabbing;
+}
+
+/* Context menu for adding conversation to folder */
+.gsm-context-menu {
+  position: fixed;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 4px 0;
+  z-index: 10000;
+  min-width: 180px;
+  max-width: 280px;
+}
+
+.gsm-context-menu-item {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: #202124;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gsm-context-menu-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.gsm-context-menu-divider {
+  height: 1px;
+  background: #e8eaed;
+  margin: 4px 0;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .gsm-folder-header { color: #9aa0a6; }
+  .gsm-add-folder-btn { color: #9aa0a6; }
+  .gsm-add-folder-btn:hover { background: rgba(255, 255, 255, 0.08); color: #e8eaed; }
+  .gsm-folder-title { color: #e8eaed; }
+  .gsm-folder-title:hover { background: rgba(255, 255, 255, 0.06); }
+  .gsm-folder-arrow { color: #9aa0a6; }
+  .gsm-folder-name-input { background: #303134; color: #e8eaed; border-color: #8ab4f8; }
+  .gsm-folder-action-btn { color: #9aa0a6; }
+  .gsm-folder-action-btn:hover { background: rgba(255, 255, 255, 0.08); color: #e8eaed; }
+  .gsm-folder-count { color: #9aa0a6; }
+  .gsm-folder-conv-item { color: #bdc1c6; }
+  .gsm-folder-conv-item:hover { background: rgba(255, 255, 255, 0.06); }
+  .gsm-folder-conv-remove { color: #9aa0a6; }
+  .gsm-folder-empty { color: #9aa0a6; }
+  .gsm-drag-handle { color: #9aa0a6; }
+  .gsm-context-menu { background: #303134; }
+  .gsm-context-menu-item { color: #e8eaed; }
+  .gsm-context-menu-item:hover { background: rgba(255, 255, 255, 0.06); }
+  .gsm-context-menu-divider { background: #5f6368; }
+  .gsm-folder.gsm-drag-over { outline-color: #8ab4f8; }
+}
