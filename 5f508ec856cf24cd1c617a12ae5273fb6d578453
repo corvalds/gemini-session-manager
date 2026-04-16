@@ -1,0 +1,24 @@
+src/content.css
+  5dd16ffa6a7ad4e7 2,7,9,20,31,40-41,45,50,59,74,79,93,111,117-118,122,143,152-153,157,162,167,190,198,215,228-229,233,241,243,251,253,269,277,281,286,291,299
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "5f508ec856cf24cd1c617a12ae5273fb6d578453",
+  "prompts": {
+    "5dd16ffa6a7ad4e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a9df57d9-95cb-4cb1-bff7-a33d66bd1a11",
+        "model": "<synthetic>"
+      },
+      "human_author": "chenzhenzhong",
+      "messages": [],
+      "total_additions": 58,
+      "total_deletions": 41,
+      "accepted_lines": 59,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/4cff8e82c8852cf5ff9ef413cc923b63503b4f6af54bea2c92aa0ac4f8995945"
+    }
+  }
+}
