@@ -43,7 +43,7 @@
     const container = document.createElement('div');
     container.id = CONTAINER_ID;
     container.className = 'gsm-folder-section';
-    sidebar.parentElement.insertBefore(container, sidebar);
+    sidebar.insertBefore(container, sidebar.firstChild);
     renderFolders();
   }
 
