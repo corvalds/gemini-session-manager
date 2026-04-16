@@ -61,7 +61,7 @@
     header.className = 'gsm-folder-header';
     header.innerHTML = `
       <span>Folders</span>
-      <button class="gsm-add-folder-btn" title="New folder">+</button>
+      <button class="gsm-add-folder-btn" title="New folder"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></button>
     `;
     header.querySelector('.gsm-add-folder-btn').addEventListener('click', handleCreateFolder);
     container.appendChild(header);
@@ -82,20 +82,18 @@
     titleBar.className = 'gsm-folder-title';
     titleBar.draggable = true;
     titleBar.innerHTML = `
-      <span class="gsm-drag-handle">⠿</span>
-      <span class="gsm-folder-arrow">▶</span>
-      <span class="gsm-folder-icon">📁</span>
+      <svg class="gsm-folder-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       <span class="gsm-folder-name">${escapeHtml(folder.name)}</span>
       <span class="gsm-folder-count">${folder.conversationIds.length}</span>
       <span class="gsm-folder-actions">
-        <button class="gsm-folder-action-btn gsm-rename-btn" title="Rename">✏️</button>
-        <button class="gsm-folder-action-btn gsm-delete-btn" title="Delete">🗑️</button>
+        <button class="gsm-folder-action-btn gsm-rename-btn" title="Rename"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></button>
+        <button class="gsm-folder-action-btn gsm-delete-btn" title="Delete"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></button>
       </span>
     `;
 
     // Toggle open/close
     titleBar.addEventListener('click', (e) => {
-      if (e.target.closest('.gsm-folder-actions') || e.target.closest('.gsm-drag-handle')) return;
+      if (e.target.closest('.gsm-folder-actions')) return;
       toggleFolder(folder.id);
     });
 
@@ -148,7 +146,7 @@
 
     item.innerHTML = `
       <span class="gsm-folder-conv-name">${escapeHtml(convName)}</span>
-      <button class="gsm-folder-conv-remove" title="Remove from folder">✕</button>
+      <button class="gsm-folder-conv-remove" title="Remove from folder"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
     `;
 
     // Click to navigate
