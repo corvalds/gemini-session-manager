@@ -1,0 +1,24 @@
+src/content.js
+  5dd16ffa6a7ad4e7 34-50,52,61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "bcf61cb3cf929957f3df56caa76d6448a6d1e3d0",
+  "prompts": {
+    "5dd16ffa6a7ad4e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a9df57d9-95cb-4cb1-bff7-a33d66bd1a11",
+        "model": "<synthetic>"
+      },
+      "human_author": "chenzhenzhong",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 36,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/59eb13ea4c7034c5d7e96e5369ce602a5dbe05ac4b51ee30ce40b687a05aa4ea"
+    }
+  }
+}
