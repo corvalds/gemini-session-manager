@@ -31,23 +31,14 @@
   }
 
   function findSidebar() {
-    // Find the scrollable container that holds conversation items
-    // Look for conversation links first, then walk up to their list container
-    const convLink = document.querySelector('a[href*="/app/"]');
-    if (convLink) {
-      // Walk up to find the scrollable parent that contains all conversation items
-      let parent = convLink.parentElement;
-      while (parent && parent !== document.body) {
-        const style = getComputedStyle(parent);
-        if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
-          return parent;
-        }
-        parent = parent.parentElement;
+    // Find the nav element that contains conversation links (sidebar, not main content)
+    const navs = document.querySelectorAll('nav, [role="navigation"]');
+    for (const nav of navs) {
+      if (nav.querySelector('a[href*="/app/"]')) {
+        return nav;
       }
-      // Fallback: use the conversation link's grandparent list container
-      return convLink.closest('nav') || convLink.parentElement?.parentElement;
     }
-    // Fallback selectors
+    // Fallback: any nav
     return document.querySelector('nav.gmat-nav-list')
       || document.querySelector('[role="navigation"]');
   }
@@ -58,8 +49,19 @@
     const container = document.createElement('div');
     container.id = CONTAINER_ID;
     container.className = 'gsm-folder-section';
-    // Insert at the top of the scrollable sidebar content
-    sidebar.insertBefore(container, sidebar.firstChild);
+
+    // Insert before the conversation list within the sidebar nav.
+    // Walk up from the first conversation link to find its direct-child ancestor of the nav.
+    const firstConv = sidebar.querySelector('a[href*="/app/"]');
+    if (firstConv) {
+      let target = firstConv;
+      while (target.parentElement && target.parentElement !== sidebar) {
+        target = target.parentElement;
+      }
+      sidebar.insertBefore(container, target);
+    } else {
+      sidebar.appendChild(container);
+    }
     renderFolders();
   }
 
