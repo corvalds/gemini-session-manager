@@ -31,10 +31,25 @@
   }
 
   function findSidebar() {
-    // Gemini's sidebar nav containing conversation list
+    // Find the scrollable container that holds conversation items
+    // Look for conversation links first, then walk up to their list container
+    const convLink = document.querySelector('a[href*="/app/"]');
+    if (convLink) {
+      // Walk up to find the scrollable parent that contains all conversation items
+      let parent = convLink.parentElement;
+      while (parent && parent !== document.body) {
+        const style = getComputedStyle(parent);
+        if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
+          return parent;
+        }
+        parent = parent.parentElement;
+      }
+      // Fallback: use the conversation link's grandparent list container
+      return convLink.closest('nav') || convLink.parentElement?.parentElement;
+    }
+    // Fallback selectors
     return document.querySelector('nav.gmat-nav-list')
-      || document.querySelector('[role="navigation"]')
-      || document.querySelector('.conversation-list');
+      || document.querySelector('[role="navigation"]');
   }
 
   // ===== Render =====
@@ -43,6 +58,7 @@
     const container = document.createElement('div');
     container.id = CONTAINER_ID;
     container.className = 'gsm-folder-section';
+    // Insert at the top of the scrollable sidebar content
     sidebar.insertBefore(container, sidebar.firstChild);
     renderFolders();
   }
