@@ -6,7 +6,13 @@
   margin-bottom: 4px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   padding-bottom: 4px;
-  width: 100%;
+  /* Defensive: prevent breaking parent flex/grid layouts */
+  display: block !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  grid-column: 1 / -1 !important;
+  box-sizing: border-box !important;
 }
 
 .gsm-folder-header {

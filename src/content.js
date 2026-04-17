@@ -20,47 +20,95 @@
 
   function waitForSidebar() {
     const tryInject = () => {
-      const sidebar = findSidebar();
-      if (sidebar && !document.getElementById(CONTAINER_ID)) {
-        injectFolderUI(sidebar);
-        observeSidebarConversations(sidebar);
-      }
+      if (document.getElementById(CONTAINER_ID)) return;
+      const scrollContainer = findSidebarScrollContainer();
+      if (!scrollContainer) return;
+
+      const insertionPoint = findConversationSection(scrollContainer);
+      injectFolderUI(scrollContainer, insertionPoint);
+
+      // Validate after layout settles
+      requestAnimationFrame(() => {
+        const container = document.getElementById(CONTAINER_ID);
+        if (container && !validateInjection(container)) {
+          container.remove();
+          // Fallback: just append to scroll container
+          injectFolderUI(scrollContainer, null);
+        }
+      });
+
+      observeSidebarConversations(scrollContainer);
     };
     tryInject();
     setInterval(tryInject, SIDEBAR_POLL_INTERVAL);
   }
 
-  function findSidebar() {
-    // Find the nav element that contains conversation links (sidebar, not main content)
-    const navs = document.querySelectorAll('nav, [role="navigation"]');
-    for (const nav of navs) {
-      if (nav.querySelector('a[href*="/app/"]')) {
-        return nav;
+  function findSidebarScrollContainer() {
+    // Start from a conversation link — most reliable anchor
+    const convLink = document.querySelector('a[href*="/app/"]');
+    if (!convLink) return null;
+
+    // Walk up looking for a vertical scrollable container with constrained width (sidebar)
+    let el = convLink.parentElement;
+    while (el && el !== document.body) {
+      const style = getComputedStyle(el);
+      const isScrollable = style.overflowY === 'auto' || style.overflowY === 'scroll';
+      const isNarrow = el.offsetWidth < 400;
+
+      if (isScrollable && isNarrow) {
+        return el;
       }
+      el = el.parentElement;
     }
-    // Fallback: any nav
-    return document.querySelector('nav.gmat-nav-list')
-      || document.querySelector('[role="navigation"]');
+
+    // Fallback: find the narrowest scrollable ancestor
+    el = convLink.parentElement;
+    while (el && el !== document.body) {
+      const style = getComputedStyle(el);
+      const isScrollable = style.overflowY === 'auto' || style.overflowY === 'scroll';
+      if (isScrollable) {
+        return el;
+      }
+      el = el.parentElement;
+    }
+
+    return null;
+  }
+
+  function findConversationSection(scrollContainer) {
+    // Walk up from the first conversation link to find its direct-child ancestor
+    // of the scroll container — this is the conversation list section
+    const firstConv = scrollContainer.querySelector('a[href*="/app/"]');
+    if (!firstConv) return null;
+
+    let target = firstConv;
+    while (target.parentElement && target.parentElement !== scrollContainer) {
+      target = target.parentElement;
+    }
+    return target;
+  }
+
+  function validateInjection(container) {
+    const rect = container.getBoundingClientRect();
+    const convLink = document.querySelector('a[href*="/app/"]');
+    if (!convLink) return true;
+
+    const convRect = convLink.getBoundingClientRect();
+    // Folder section should overlap horizontally with conversation links
+    return rect.left < convRect.right && rect.right > convRect.left;
   }
 
   // ===== Render =====
 
-  function injectFolderUI(sidebar) {
+  function injectFolderUI(scrollContainer, insertionPoint) {
     const container = document.createElement('div');
     container.id = CONTAINER_ID;
     container.className = 'gsm-folder-section';
 
-    // Insert before the conversation list within the sidebar nav.
-    // Walk up from the first conversation link to find its direct-child ancestor of the nav.
-    const firstConv = sidebar.querySelector('a[href*="/app/"]');
-    if (firstConv) {
-      let target = firstConv;
-      while (target.parentElement && target.parentElement !== sidebar) {
-        target = target.parentElement;
-      }
-      sidebar.insertBefore(container, target);
+    if (insertionPoint) {
+      scrollContainer.insertBefore(container, insertionPoint);
     } else {
-      sidebar.appendChild(container);
+      scrollContainer.appendChild(container);
     }
     renderFolders();
   }
@@ -308,10 +356,10 @@
 
   // ===== Sidebar Conversation Observation =====
 
-  function observeSidebarConversations(sidebar) {
+  function observeSidebarConversations(scrollContainer) {
     // Make sidebar conversation items draggable
     const makeConvsDraggable = () => {
-      const convLinks = sidebar.querySelectorAll('a[href*="/app/"]');
+      const convLinks = scrollContainer.querySelectorAll('a[href*="/app/"]');
       convLinks.forEach((link) => {
         if (link.dataset.gsmDraggable) return;
         link.dataset.gsmDraggable = 'true';
@@ -342,12 +390,15 @@
       makeConvsDraggable();
       // Re-inject if container was removed (Gemini SPA navigation)
       if (!document.getElementById(CONTAINER_ID)) {
-        const newSidebar = findSidebar();
-        if (newSidebar) injectFolderUI(newSidebar);
+        const sc = findSidebarScrollContainer();
+        if (sc) {
+          const ip = findConversationSection(sc);
+          injectFolderUI(sc, ip);
+        }
       }
     });
 
-    observer.observe(sidebar.parentElement || sidebar, {
+    observer.observe(scrollContainer, {
       childList: true,
       subtree: true,
     });
